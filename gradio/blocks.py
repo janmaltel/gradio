@@ -1587,6 +1587,7 @@ Received outputs:
         favicon_path: str | None = None,
         ssl_keyfile: str | None = None,
         ssl_certfile: str | None = None,
+        ssl_verify: bool | None = None,
         ssl_keyfile_password: str | None = None,
         quiet: bool = False,
         show_api: bool = True,
@@ -1729,7 +1730,8 @@ Received outputs:
 
             # Cannot run async functions in background other than app's scope.
             # Workaround by triggering the app endpoint
-            requests.get(f"{self.local_url}startup-events")
+            # requests.get(f"{self.local_url}startup-events")
+            requests.get(f"{self.local_url}startup-events", verify=ssl_verify)
 
         utils.launch_counter()
 
